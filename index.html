@@ -49,6 +49,126 @@ h1,h2,h3,h4{font-family:var(--serif)}
 .report-footer{text-align:center}.report-actions{display:grid;gap:8px;margin-top:14px}
 @media print{header,.report-actions{display:none}#app{width:100%;margin:0}.report-card{break-inside:avoid;border:1px solid #e9e1da}.chapter-title{break-after:avoid}}
 </style>
+<style id="paper-theme">
+:root {
+  --ink: #2b261f;
+  --muted: #655b50;
+  --paper: #fffcf6;
+  --line: #e3d7c4;
+  --gold: #80602e;
+  --plum: #765629;
+  --cinnabar: #a34334;
+  --serif: "Songti SC", "Noto Serif CJK SC", "Noto Serif SC", SimSun, STSong, serif;
+  --brush: "Kaiti SC", "STKaiti", KaiTi, var(--serif);
+}
+body {
+  background:
+    radial-gradient(ellipse at 95% 5%, #deccb176, transparent 37rem),
+    radial-gradient(ellipse at 0% 32%, #e5d7c271, transparent 33rem),
+    repeating-linear-gradient(113deg, #61401e04 0 1px, transparent 1px 5px),
+    #f4efe5;
+}
+header {
+  color: var(--ink);
+  background: #fbf6ebbf;
+  border-bottom: 1px solid #dfd2bb;
+  box-shadow: none;
+  font: 600 .93rem/1.6 var(--serif);
+  letter-spacing: .18em;
+}
+.sheet,.report-card {
+  background: linear-gradient(145deg, #fffdf8, var(--paper));
+  border: 1px solid #ebe2d3;
+  box-shadow: 0 9px 30px #5537160c;
+}
+.hero {padding-block: clamp(40px, 10vw, 68px)}
+.hero h1 {
+  font-size: clamp(2rem, 9vw, 3.65rem);
+  font-weight: 600;
+  letter-spacing: .12em;
+  padding-left: .12em;
+}
+.hero .seal,.round-seal {
+  color: var(--cinnabar);
+  border-color: #bd9169;
+  background: radial-gradient(circle at 55% 44%, #f2d9c87a, transparent 73%);
+  box-shadow: inset 0 0 0 4px #fdf6e9;
+  font-family: var(--brush);
+}
+.hero .seal {
+  outline-color: #c0a17d;
+  transform: rotate(-5deg);
+  border-radius: 44% 48% 45% 47%;
+}
+.hero p {color: var(--muted)}
+button {background: #fffaf2}
+button:hover {background: #f5ecdf;border-color: #a68250}
+button:focus-visible {outline-color: var(--cinnabar)}
+.primary {background: #312a23;color: #fff9ef;border-color: transparent}
+.primary:hover {background: #4a3928}
+.hero .primary,.hero .secondary {border-radius: 999px}
+.option span {color: var(--gold)}
+.option[aria-pressed=true] {background: #f4e8d8;border-color: #aa8250}
+.deck button {
+  position: relative;
+  min-height: 120px;
+  color: #f7ead1;
+  font: 600 1.6rem/1 var(--brush);
+  border: 1px solid #806944;
+  box-shadow: inset 0 0 0 5px #40372a,inset 0 0 0 6px #a28250;
+  background: radial-gradient(ellipse at 55% 37%, #655543, #382f24 70%);
+}
+.deck button:hover {background: #594633}
+.deck button::after {
+  content: "";
+  position: absolute;
+  bottom: 23px;
+  left: calc(50% - 2px);
+  width: 4px;
+  height: 4px;
+  background: #df9b7b;
+  border-radius: 50%;
+}
+.report-heading {font-weight:600;letter-spacing:.12em}
+.chapter-title {font-family:var(--brush);border-bottom:1px solid #c7af87;padding-bottom:9px}
+.chapter-title span {background:transparent;border:1px solid #ab8f62;color:#715027;border-radius:3px}
+.report-card h3::before {background: #a88446;width: 3px}
+.report-card .report-state {
+  color: var(--ink);
+  font-family: var(--brush);
+  font-size: clamp(1.85rem,7vw,2.5rem);
+  letter-spacing: .16em;
+}
+.report-state::after {
+  content: "";
+  display: block;
+  width: 5px;
+  height: 5px;
+  background: var(--cinnabar);
+  border-radius: 50%;
+  margin: 3px auto 0;
+}
+.trigram {background: radial-gradient(circle at 100% 3%, #faf5ea 0 21%, #dbc5a4 22%, transparent 23%),#f5ebdb}
+.clue-tile {background:#fbf5eb;border-color:#e5d9c6}
+.portrait-tags li {background:#f2ebe1;color:#554b3e}
+.portrait-tags li:first-child {background:#ede0ca;color:#6f5022}
+.element-row {background:#e8ece1;color:#41553b}
+.element-row[data-element="水"] {background:#e5ece9;color:#425d57}
+.element-row[data-element="土"] {background:#efe2cc;color:#6d512e}
+.element-row[data-element="火"] {background:#f2dfd5;color:#853d30}
+.element-row[data-element="金"] {background:#eee7d6;color:#6c532b}
+.character {background:#fffaf1;color:var(--ink);font-family:var(--brush)}
+.advice-panel {background:#f5eee2;border-left:2px solid #cfb48f}
+.reminder-seal {border:1px solid #ae6b51}
+@media (max-width:360px) {
+  .hero .primary,.hero .secondary {padding-inline:11px}
+  .hero .secondary {margin-left:4px}
+}
+@media print {
+  body {background:#fff}
+  .report-card {box-shadow:none}
+}
+</style>
 <main>
 <header>你的姻缘推演 · 缘牌解读</header>
 <div id="app"></div>
