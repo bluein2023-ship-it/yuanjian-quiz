@@ -8,8 +8,49 @@
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 75% 0%,#ead9e7,transparent 55%),#f5ede6;color:var(--ink);font:16px/1.75 "PingFang SC","Microsoft YaHei",sans-serif;min-height:100vh}main{width:min(100% - 28px,660px);margin:auto;padding:30px 0 52px}header{border-bottom:1px solid #bda9b9;margin-bottom:22px;letter-spacing:.18em;padding:0 4px 10px;color:var(--plum)}h1,h2,h3{font-family:"Songti SC","Noto Serif CJK SC",serif;line-height:1.4}h1{font-size:clamp(34px,8vw,58px);margin:8px 0 18px}h2{font-size:clamp(23px,5vw,30px);margin:12px 0 20px}h3{margin:0 0 10px}.sheet,article{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:clamp(20px,5vw,38px);box-shadow:0 12px 40px #53334c0c}.hero{text-align:center;padding-block:44px}.seal{display:grid;place-items:center;width:88px;height:88px;border:1px solid #a97883;outline:1px solid #d2acaa;outline-offset:5px;border-radius:50%;margin:10px auto 28px;color:var(--plum);font:36px "Songti SC",serif}small,.meta{color:var(--muted)}p{margin:0 0 14px}article p:last-child{margin:0}button{font:inherit;cursor:pointer;border:1px solid var(--line);border-radius:10px;background:#fffdf9;color:var(--ink);padding:11px 16px;min-height:46px}button:hover{border-color:var(--plum);background:#f8edf4}button:focus-visible{outline:3px solid #795483;outline-offset:3px}.primary{background:var(--plum);color:white;border-color:transparent}.primary:hover{background:#4d2b49}.option{display:flex;align-items:baseline;gap:12px;text-align:left;width:100%;margin:9px 0}.option span{color:var(--plum);font-size:.8rem;font-weight:700}.option[aria-pressed=true]{border-color:var(--plum);background:#f3e5ee}.nav{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:22px}button:disabled{opacity:.45;cursor:default}progress{width:100%;height:8px;accent-color:var(--plum);display:block;margin-top:8px}.meta{display:flex;justify-content:space-between;font-size:.88rem}.privacy{display:block;margin-top:16px}article{margin:12px 0}.insignia{color:var(--plum);letter-spacing:.13em}.clues{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}.clues span{background:#f3e7ef;border-radius:8px;padding:6px 10px}@media print{body{background:white}main{width:100%;padding:0}.nav{display:none}article{break-inside:avoid;box-shadow:none}}
 </style>
 <style>.deck{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:22px 0}.deck button{min-height:105px;background:#653b60;color:white;border:2px solid #a57a9c;font-size:1.5rem}.deck button:hover{background:#4d2b49}.sub{color:#653b60;margin-top:20px}.chapter{margin-top:28px}.hero p{max-width:26em;margin-inline:auto}</style>
+<style>
+:root{--ink:#293040;--muted:#626471;--paper:#fff;--line:#e9e1da;--plum:#4d3d73;--gold:#a66e14;--serif:"Songti SC","Noto Serif CJK SC","Noto Serif SC",SimSun,STSong,serif}
+body{background:#f5f1eb;color:var(--ink)}
+header{letter-spacing:.04em;color:#252833;background:#fff;text-align:center;font-weight:650;margin:0;border:0;padding:16px 12px;box-shadow:0 1px 0 #ebe5df}
+main{width:auto;padding:0;margin:auto}#app{width:min(calc(100% - 24px),620px);margin:24px auto 44px}
+h1,h2,h3,h4{font-family:var(--serif)}
+.sheet{border:0;border-radius:20px}.hero .secondary{margin-left:8px}.hero .primary{min-width:114px}
+.report-heading{font-size:clamp(1.5rem,5.5vw,2rem);margin:0 4px 20px}
+.report-chapter{margin-bottom:24px}
+.chapter-title{color:var(--gold);font-size:1.7rem;display:flex;align-items:center;gap:11px;margin:0 3px 12px;font-weight:550}
+.chapter-title span{font:600 .9rem/1.2 system-ui,sans-serif;padding:7px 9px;background:#976410;color:white;border-radius:6px}
+.report-card{padding:clamp(17px,4.5vw,27px);margin:0 0 12px;background:#fff;border:0;box-shadow:0 5px 18px #6f594708;border-radius:16px}
+.report-card h3{font-weight:650;font-size:clamp(1.04rem,4.6vw,1.3rem);display:flex;align-items:baseline;gap:10px;margin:0 0 14px}
+.report-card h3::before{content:"";display:inline-block;background:#bd8426;border-radius:6px;width:4px;height:.85em;flex:none}
+.report-card p{color:var(--muted);line-height:1.85;margin:0 0 12px}.report-card p:last-child{margin-bottom:0}
+.report-card .report-state{font-family:var(--serif);font-size:clamp(1.55rem,6vw,2rem);color:var(--plum);text-align:center;margin:10px 0 13px;letter-spacing:.08em}
+.report-pair,.report-clues{display:grid;gap:9px;margin:13px 0 0}
+.report-pair{grid-template-columns:repeat(2,minmax(0,1fr))}
+.report-clues{grid-template-columns:repeat(3,minmax(0,1fr));margin-bottom:13px}
+.trigram,.clue-tile{border:1px solid #e8dac0;border-radius:12px;padding:8px 10px;font-size:.83rem}
+.trigram{background:radial-gradient(circle at 100% 8%,#fff 0,#fff 24%,transparent 25%),#f8f3ee}
+.trigram span,.clue-tile span,.report-label{color:var(--muted);display:block}
+.trigram strong,.clue-tile strong{font:600 clamp(.92rem,3.9vw,1.13rem)/1.6 var(--serif);display:block}
+.trigram strong{color:var(--plum)}.clue-tile{text-align:center;padding-inline:3px;border-color:#e6e1dd}
+.date-body{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:15px}
+.round-seal{display:grid;place-items:center;width:62px;aspect-ratio:1;border:1px solid #d9c38d;border-radius:50%;box-shadow:inset 0 0 0 4px #fbf7eb;color:var(--plum);font:600 1rem var(--serif)}
+.zodiac-year{display:block;font:600 1.45rem/1.5 var(--serif)}
+.report-label{font-size:.85rem}.portrait-tags{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:7px;margin:13px 0 0}
+.portrait-tags li{border-radius:20px;background:#f4f0ed;color:#554e59;padding:2px 9px;font-size:.84rem}
+.portrait-tags li:first-child{background:#f7edda;color:#805814}
+.detail-rows{margin:0}.detail-rows div{display:grid;grid-template-columns:3.2em 1fr;gap:4px;padding:9px 0}
+.detail-rows div+div{border-top:1px solid #efe9e3}.detail-rows dt{color:#8c5f17}.detail-rows dd{margin:0}
+.element-row{display:grid;grid-template-columns:1.1fr repeat(4,minmax(0,1fr));align-items:center;gap:6px;background:#edf1ec;color:#41644b;border-radius:12px;padding:9px;margin:0 0 8px}
+.element-row[data-element="水"]{background:#e2f0f6;color:#28607a}.element-row[data-element="土"]{background:#f6eadc;color:#745232}.element-row[data-element="火"]{background:#fae5e0;color:#873b36}.element-row[data-element="金"]{background:#f4edd7;color:#745320}
+.element-label strong,.element-label small{display:block;text-align:center}.element-label strong{font:600 1.15rem var(--serif)}.element-label small{font-size:.73rem;color:inherit}
+.character{background:#fff;color:#252831;border-radius:7px;text-align:center;padding:5px 0;font:500 clamp(1.12rem,6vw,1.65rem)/1.5 var(--serif)}
+.reminder-seal{margin:8px auto 9px;width:68px;font-size:1.85rem}.report-card .reminder-title{text-align:center;font:600 1.1rem/1.6 var(--serif);color:var(--ink);margin-bottom:14px}
+.advice-panel{padding:11px 13px;background:#f6f1f4;border-radius:9px;margin:0 0 8px}.advice-panel:last-child{margin-bottom:0}.advice-panel h4{margin:0 0 3px;font-size:1.02rem}.advice-panel p{font-size:.94rem}
+.report-footer{text-align:center}.report-actions{display:grid;gap:8px;margin-top:14px}
+@media print{header,.report-actions{display:none}#app{width:100%;margin:0}.report-card{break-inside:avoid;border:1px solid #e9e1da}.chapter-title{break-after:avoid}}
+</style>
 <main>
-<header>缘笺 · 正缘推演</header>
+<header>你的姻缘推演 · 缘牌解读</header>
 <div id="app"></div>
 <noscript>请启用 JavaScript 后开始测试。</noscript>
 </main>
@@ -112,33 +153,130 @@ function meter(section) {
   return [meta, progress];
 }
 
-function story() {
-  const a = (number) => answers[number - 1];
+const chapterNames = ['正缘', '良人', '提醒'];
+const branchSymbols = ['☲ 离', '☳ 震', '☶ 艮', '☵ 坎'];
+const hiddenSymbols = ['☴ 巽', '☶ 艮', '☷ 坤'];
+const lookTags = ['利落', '松弛', '安静', '亲和'];
+const mannerTags = ['有主见', '会顾及他人', '幽默', '务实'];
+const signTags = ['记得细节', '有分寸', '善于安排', '耐心'];
+const contrastTags = ['熟了健谈', '享受独处', '愿意倾听', '守约'];
+const extraElements = ['土 · 磊、城、宇、安', '木 · 林、桐、栩、棠', '火 · 灵、旭、昊、煦'];
+const sampleAnswers = [0,0,2,1,2,2,0,1,1,2,1,2,2,1,1,3,2];
+
+function reportCard(title) {
+  const card = el('article', '', 'report-card');
+  card.append(el('h3', title));
+  return card;
+}
+
+function tile(label, value, className) {
+  const box = el('div', '', className);
+  box.append(el('span', label), el('strong', value));
+  return box;
+}
+
+function report(choices, draws, preview) {
+  const a = number => choices[number - 1];
   const encounter = encounters[a(3)];
-  const fate = fateCards[picks[0]];
-  const person = peopleCards[picks[1]];
+  const fate = fateCards[draws[0]];
+  const person = peopleCards[draws[1]];
   const job = jobs[a(9)];
   const reminder = reminders[a(16)];
   const letter = questions[16][a(17) + 1];
-  return [
-    ['01 正缘', [
-      ['正缘离你有多远 · ' + encounter[0], '这一幕从' + place[a(1)] + '开始。' + entry[a(2)] + '。', encounter[1] + afterglow[a(4)]],
-      ['明缘 · ' + encounter[2], encounter[3] + '。'],
-      ['暗缘 · ' + fate[0], fate[1]],
-      ['缘分何时更近', timing[a(5)], '牌面应期 · ' + fate[2]]
-    ]],
-    ['02 良人', [
-      ['TA 是什么样的人', '故事里的 TA ' + looks[a(6)] + '，遇事' + manners[a(7)] + '。' + contrasts[a(10)] + '。'],
-      ['TA 的身份和工作', 'TA 像是' + job[0] + '。职业想象 · ' + job[1] + '。'],
-      ['如何认出 TA', '留意这个细节：TA ' + signs[a(8)] + '。', '生肖 · ' + person[1] + '　生月 · ' + person[2] + '　方位 · ' + person[3]],
-      ['名字字象 · ' + person[0], person[4], person[5]]
-    ]],
-    ['03 提醒', [
-      [reminder[0] + ' · ' + reminder[1], reminder[2], '如果迟迟没约下一次，' + nextMeet[a(15)] + '。', reminderSeal[picks[2]] + '的便签 · ' + letter],
-      ['你是个什么样的人', '有好感时，你往往会' + showLove[a(11)] + '。当对方问你愿不愿意再见，你' + reply[a(12)] + '。'],
-      ['感情里可以怎样相处', '计划临时变动时，可以说' + change[a(13)], '有分歧时，可以' + friction[a(14)] + '。']
-    ]]
+  const heading = el('h1', preview ? '姻缘推演 · 示例结果' : '你的姻缘推演', 'report-heading');
+  heading.tabIndex = -1;
+  app.replaceChildren(heading);
+
+  const chapters = chapterNames.map((name, index) => {
+    const section = el('section', '', 'report-chapter');
+    const title = el('h2', '', 'chapter-title');
+    title.append(el('span', '0' + (index + 1)), document.createTextNode(name));
+    section.append(title);
+    app.append(section);
+    return section;
+  });
+
+  const distance = reportCard('正缘离你有多远');
+  const pairs = el('div', '', 'report-pair');
+  pairs.append(tile('明缘 · ' + encounter[2], branchSymbols[a(3)], 'trigram'),
+    tile('暗缘 · ' + fate[0], hiddenSymbols[draws[0]], 'trigram'));
+  distance.append(el('p', encounter[0], 'report-state'),
+    el('p', '想象一个从' + place[a(1)] + '展开的故事。' + entry[a(2)] + '。' + encounter[1] + afterglow[a(4)]), pairs);
+
+  const date = reportCard('缘分何时更近');
+  const dateBody = el('div', '', 'date-body');
+  const dateCopy = el('div');
+  dateCopy.append(el('span', '牌面应期 · 桃花旺的属相年', 'report-label'),
+    el('strong', fate[2], 'zodiac-year'), el('p', timing[a(5)]) );
+  dateBody.append(el('div', '应期', 'round-seal'), dateCopy);
+  date.append(dateBody);
+  chapters[0].append(distance, date);
+
+  const portrait = reportCard('TA是什么样的人');
+  const tags = el('ul', '', 'portrait-tags');
+  [lookTags[a(6)], mannerTags[a(7)], signTags[a(8)], contrastTags[a(10)]]
+    .forEach(tag => tags.append(el('li', tag)));
+  portrait.append(el('p', '故事里的 TA ' + looks[a(6)] + '，遇事' + manners[a(7)] + '。' + contrasts[a(10)] + '。'), tags);
+  const work = reportCard('TA的身份和工作');
+  const rows = el('dl', '', 'detail-rows');
+  [['身份', job[0]], ['职业', job[1]]].forEach(([label, value]) => {
+    const row = el('div');
+    row.append(el('dt', label), el('dd', value));
+    rows.append(row);
+  });
+  work.append(rows);
+  const recognition = reportCard('如何认出TA');
+  const clues = el('div', '', 'report-clues');
+  ['属相', '生月', '方位'].forEach((label, index) => {
+    clues.append(tile(label, person[index + 1], 'clue-tile'));
+  });
+  recognition.append(clues, el('p', '留意这个细节。TA ' + signs[a(8)] + '。'));
+  const names = reportCard('TA的名字可能有哪些字');
+  [person[4], person[5], extraElements[draws[1]]].forEach(group => {
+    const [element, characters] = group.split(' · ');
+    const row = el('div', '', 'element-row');
+    row.dataset.element = element;
+    const label = el('div', '', 'element-label');
+    label.append(el('strong', element), el('small', '五行'));
+    row.append(label, ...characters.split('、').map(character => el('span', character, 'character')));
+    names.append(row);
+  });
+  names.append(el('small', '名字字象为缘牌意象。'));
+  chapters[1].append(portrait, work, recognition, names);
+
+  const note = reportCard('这段缘分最需注意什么');
+  const seal = el('div', reminder[0], 'round-seal reminder-seal');
+  note.append(seal, el('p', reminder[1], 'reminder-title'));
+  const suggestions = [
+    ['留意这件事', reminder[2]],
+    ['给见面留时间', timing[a(5)]],
+    ['没约成下一次时', nextMeet[a(15)] + '。'],
+    ['相处有分歧时', friction[a(14)] + '。'],
+    [reminderSeal[draws[2]] + '的便签', letter]
   ];
+  suggestions.forEach(([title, copy]) => {
+    const panel = el('div', '', 'advice-panel');
+    panel.append(el('h4', title), el('p', copy));
+    note.append(panel);
+  });
+  const self = reportCard('你是个什么样的人');
+  self.append(el('p', '有好感时，你往往会' + showLove[a(11)] + '。当对方问你愿不愿意再见，你' + reply[a(12)] + '。'));
+  const together = reportCard('感情里可以怎样相处');
+  ['计划临时变动时，可以说' + change[a(13)],
+    '如果你留意到 TA ' + signs[a(8)] + '，相处时也可以告诉 TA，哪些细节对你很重要。'
+  ].forEach(copy => together.append(el('p', copy, 'advice-panel')));
+  chapters[2].append(note, self, together);
+
+  const footer = el('footer', '', 'report-footer');
+  footer.append(el('small', '应期、职业和个人线索为缘牌意象，供娱乐解读。'));
+  const nav = el('div', '', 'report-actions');
+  nav.append(action('打印或存为 PDF', () => window.print(), 'primary'), action('回到首页', () => {
+    answers.length = 0;
+    picks.length = 0;
+    move(-1);
+  }));
+  footer.append(nav);
+  app.append(footer);
 }
 
 function render() {
@@ -151,6 +289,7 @@ function render() {
     heading = el('h1', '你的姻缘推演');
     sheet.append(el('div', '缘', 'seal'), heading, el('p', '从一次偶遇开始，走进十七个场景，再翻开属于这段故事的三张缘牌。'),
       action('开始推演', () => move(0), 'primary'),
+      action('预览结果页', () => report(sampleAnswers, [0, 0, 0], true), 'secondary'),
       el('small', '17 道情境题＋3 次翻牌 · 无需登录 · 答案仅在当前页面使用', 'privacy'));
   } else if (step < questions.length) {
     const [title, ...options] = questions[step];
@@ -199,25 +338,8 @@ function render() {
     nav.prepend(action('返回上一步', () => move(step - 1)));
     sheet.append(nav);
   } else {
-    heading = el('h1', '你的姻缘推演');
-    sheet.append(el('p', '缘牌解读', 'insignia'), heading);
-    for (const [title, sections] of story()) {
-      const chapter = el('section', '', 'chapter');
-      chapter.append(el('h2', title));
-      for (const [subtitle, ...lines] of sections) {
-        const article = el('article');
-        article.append(el('h3', subtitle), ...lines.map(line => el('p', line)));
-        chapter.append(article);
-      }
-      app.append(chapter);
-    }
-    app.append(el('small', '人物职业、生肖、生月、方位、应期和名字字象为娱乐牌面。', 'privacy'));
-    nav.append(action('打印或存为 PDF', () => window.print()), action('重新开始', () => {
-      answers.length = 0;
-      picks.length = 0;
-      move(-1);
-    }));
-    app.append(nav);
+    report(answers, picks, false);
+    return;
   }
   heading.tabIndex = -1;
 }
