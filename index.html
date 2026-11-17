@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>缘笺 · 正缘推演</title>
+<style>
+:root{color-scheme:light;--ink:#332538;--plum:#653b60;--paper:#fffaf4;--muted:#6d5b66;--line:#e4d5d5}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 75% 0%,#ead9e7,transparent 55%),#f5ede6;color:var(--ink);font:16px/1.75 "PingFang SC","Microsoft YaHei",sans-serif;min-height:100vh}main{width:min(100% - 28px,660px);margin:auto;padding:30px 0 52px}header{border-bottom:1px solid #bda9b9;margin-bottom:22px;letter-spacing:.18em;padding:0 4px 10px;color:var(--plum)}h1,h2,h3{font-family:"Songti SC","Noto Serif CJK SC",serif;line-height:1.4}h1{font-size:clamp(34px,8vw,58px);margin:8px 0 18px}h2{font-size:clamp(23px,5vw,30px);margin:12px 0 20px}h3{margin:0 0 10px}.sheet,article{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:clamp(20px,5vw,38px);box-shadow:0 12px 40px #53334c0c}.hero{text-align:center;padding-block:44px}.seal{display:grid;place-items:center;width:88px;height:88px;border:1px solid #a97883;outline:1px solid #d2acaa;outline-offset:5px;border-radius:50%;margin:10px auto 28px;color:var(--plum);font:36px "Songti SC",serif}small,.meta{color:var(--muted)}p{margin:0 0 14px}article p:last-child{margin:0}button{font:inherit;cursor:pointer;border:1px solid var(--line);border-radius:10px;background:#fffdf9;color:var(--ink);padding:11px 16px;min-height:46px}button:hover{border-color:var(--plum);background:#f8edf4}button:focus-visible{outline:3px solid #795483;outline-offset:3px}.primary{background:var(--plum);color:white;border-color:transparent}.primary:hover{background:#4d2b49}.option{display:flex;align-items:baseline;gap:12px;text-align:left;width:100%;margin:9px 0}.option span{color:var(--plum);font-size:.8rem;font-weight:700}.option[aria-pressed=true]{border-color:var(--plum);background:#f3e5ee}.nav{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:22px}button:disabled{opacity:.45;cursor:default}progress{width:100%;height:8px;accent-color:var(--plum);display:block;margin-top:8px}.meta{display:flex;justify-content:space-between;font-size:.88rem}.privacy{display:block;margin-top:16px}article{margin:12px 0}.insignia{color:var(--plum);letter-spacing:.13em}.clues{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}.clues span{background:#f3e7ef;border-radius:8px;padding:6px 10px}@media print{body{background:white}main{width:100%;padding:0}.nav{display:none}article{break-inside:avoid;box-shadow:none}}
+</style>
+<main>
+<header>缘笺 · 正缘推演</header>
+<div id="app"></div>
+<noscript>请启用 JavaScript 后开始测试。</noscript>
+</main>
+<script>
+// 每题的选项与结果片段按相同顺序排列。
+const questions = [
+['一个聊过几次、让你有点好奇的人约你喝咖啡。假设这周有空，你会？','愿意见一次','想再聊几次','更想先在多人场合见','这阵子还是想把时间留给自己'],
+['如果可以挑一种相识开场，你想从哪一幕开始？','朋友散场后，你们还在聊','一起处理一件小麻烦','在同一项活动里碰见好几次','线上聊到一件都想去做的事'],
+['第一次单独见面挺愉快。你通常在哪个时候发现自己还想见 TA？','回家路上就想约下一次','第二天突然想起一句话','下次再碰见时，发现自己挺高兴','对方认真约下一次时，我才开始期待'],
+['最近的生活里，你最容易为一次见面留出哪段时间？','一顿短午餐或一杯咖啡','提前几天定好的一个晚上','原本就会参加的活动前后','最近很少会专门为认识新人留时间'],
+['一群人第一次见面，哪一幕最容易让你记住 TA？','安静听了一会儿，开口时说出了一个我没想到的观点','自然地把落单的人带进话题','看大家选不出去哪儿，提了个具体方案','接住我随口开的玩笑，让我一下放松'],
+['TA 临时取消了你们约好的晚饭。哪条消息更让你愿意再约？','「今天赶不过来。周四七点我可以，你方便吗？」','「今天临时变动，知道你特意留了时间。你缓一缓，想改天见的话我们再约。」'],
+['假设下次见面的时间已经定好。中间隔着四五天，你希望怎样联系？','大多数天简单聊两句','中间有一两次比较专心的聊天','想分享时发，隔几天没聊也自然','有影响下次见面的事及时说，其他可以见面聊'],
+['两个人都忙，这周只剩一次机会见面，你觉得怎样安排最舒服？','保住原本约好的时间','换成两人都能到的一顿短饭','移到下周，今天就把新时间定下','先把各自的事处理好，日程明朗了再约'],
+['相处一阵子后，哪种落差最容易让你收回好感？','说得认真，答应的事情却常落空','平时关心我，听到不同意见就敷衍','很主动，却经常替我做决定','聊得很亲密，却一直回避我们想要什么关系'],
+['发现自己有点喜欢 TA，你最常怎样表现出来？','主动发消息或约见面','记住细节，找机会做点什么','相处时更投入，熟了再开口','先看对方有没有表达同样的兴趣'],
+['哪一刻最容易让你把好感表达得更明白？','我自己已经想清楚的时候','对方明确说还想见我时','几次相处下来，对方的态度一直很稳定时','聊到可以坦白说心里话的时候'],
+['相处挺开心，TA 却比平时少联系了一点。你最可能怎么处理？','自然地问问最近怎么样','先照常过几天，看看是不是偶然','发一个轻松的话题，看看对方接不接','减少主动联系，把注意力更多放回自己的安排'],
+['你忙到有点累。你最喜欢 TA 怎么靠近你？','发一句简短的关心，让我有空再回','约一个轻松的见面，具体安排由 TA 来想','先问我想说说话，还是想休息','让我先把事情忙完，照旧保留之后的约定'],
+['哪一种瞬间最容易让你觉得，你们真的熟起来了？','可以把糗事讲给 TA 听','不说话也能舒服地待在一起','能坦白说「这件事我不同意」','遇到一件普通小事，第一反应是想和 TA 分享'],
+['约好见面，TA 临时改了计划。你通常会？','当下问清楚，顺便确定新时间','先回应，之后找机会说感受','想一想自己在意什么，再开口','把改约交给 TA，看对方会不会主动安排'],
+['第一次有分歧，TA 做什么最容易让你愿意继续谈？','先把我的意思复述一遍，确认听懂了','直接把分歧说开，一起找个办法','给彼此一点时间，也说好什么时候再聊','意识到哪句话伤人，愿意就那句话道歉'],
+['前三次见面都舒服。第四次如果只能选一个，你更想去哪儿？','去一个方便说心里话的地方，聊聊我们接下来想怎么相处','一起过一个普通下午，买点东西、随便吃顿饭'],
+['又见了几次，你也确认自己有好感。这时，哪件事最值得你提出来谈？','好感有了，但推进速度让我有压力','嘴上都说想见，实际总是我来安排','相处得很好，但我们想要的关系可能不同','两个人都在努力，现实里还是很难腾出相处时间'],
+['你们各有想做的事，周末只有半天能一起过。你希望怎么安排？','先把这半天定下来，做一件共同期待的事','轮流选，每次照顾一个人的兴趣','各做各的，留一顿饭或一段散步时间','这周先各自安排，同时定好下一次见面'],
+['翻开缘牌，你想先看哪一页？','初见 · 你们容易在哪一幕聊起来','良人 · 哪个细节会让你想再见 TA','心意 · 你喜欢一个人时会露出什么信号','下一步 · 有了好感，怎样往前走更舒服']
+];
+const fragments = [
+['有点好奇，你就愿意见一面','有点好奇时，你也愿意再聊几个来回','你更愿意在人多、熟悉的场合先见一面','这段时间，你更想把空闲留给自己'],
+['朋友散场后还想接着聊的那个人','一起把小麻烦解决后才聊开的人','在同一项活动里几次碰见的人','和你在线上聊起同一个想去的地方的人'],
+['回程时就会想起下一次可以去哪儿','隔天想起一句话，才发现自己有些期待','下一次偶遇时，会从自己的反应里察觉好感','听见对方认真安排下一次，才开始期待'],
+['如果想试着见一次，可以从一杯咖啡开始','提前留出一个晚上，会比临时起意更从容','顺着原本的活动安排多留半小时，就有机会接着聊','如果暂时没空，偶尔在原有日程里聊两句也够了'],
+['安静听人说话，开口时有自己的观察','说话自然，也会照顾还没加入话题的人','大家拿不定主意时，能提出具体方案','能接住一个随口的玩笑，让你放松下来'],
+['改约时能给一个可行的新时间','改约时会先顾及你已经为这件事留出的时间'],
+['平时简短聊几句，你会觉得有陪伴','隔几天能有一次认真聊天，你就会觉得有联系','几天没消息也自在，有想分享的事再开口','平时可以见面再聊，影响约定的事提前说就好'],
+['越忙越希望守住已经定好的见面','越忙越适合把原来的长约会改成一顿短饭','如果这周见不到，你更希望今天就定下下周的时间','日程一团乱时，你宁愿等彼此有余裕再定时间'],
+['答应的事能否兑现','有不同意见时是否愿意听完','提议之后是否仍然给你决定的余地','能不能坦诚谈及对关系的期待'],
+['用一条消息或一次邀约表示在意','记住一句随口说的话，再找机会用行动回应','先在日常相处里多投入一点','留意对方有没有给出相似的信号'],
+['自己想清楚之后','听见对方也明确想见你之后','感受到几次稳定的回应之后','聊到能坦白说心里话的时候'],
+['你通常会直接关心近况','你会先照常生活几天，给偶然的忙碌留一点余地','你会丢出一个轻松的话题，看看能不能自然接上','你会把主动联系缓一缓，把注意力放回自己的安排'],
+['一条不用马上回复的关心','一场对方已经帮你想好细节的轻松见面','一句「想说说话，还是先休息？」','对方给你时间忙完，也愿意保留已经定好的安排'],
+['能把糗事放心讲给 TA 听','安静待在一起也自在','说出不同意见也能继续好好相处','碰到一件普通小事也想分享'],
+['我想先把时间定下来。周四还是周六方便？','刚才回得有点快，其实我有点失落。下次能早一点说吗？','我先理一下自己的安排和感受，今晚再回你。','你方便的时候，可以发我一个确定的新时间吗？'],
+['谈分歧时，先让彼此说一遍自己听懂了什么','谈分歧时，可以先说明各自在意什么，再一起想办法','需要缓一缓时，可以同时约好什么时候回来聊','哪句话伤人，就为那句话单独道歉'],
+['有几次愉快相处后，你更想坐下来聊聊彼此期待','有几次愉快相处后，你更想一起过个普通下午，看看日常合不合拍'],
+['我想继续见你，也想按自己舒服的速度来。','下次能由你提个具体的时间和地点吗？','我挺想认真认识你，你希望我们接下来怎么相处？','我们这两周各挑一个能兑现的时间，好吗？'],
+['抽出半天做一件共同期待的事','轮流选活动，给彼此的兴趣都留位置','保留各自的安排，再留一段一起吃饭或散步的时间','如果这周各自安排，可以顺手定好下一次见面']
+];
+const cards = [
+['春枝','相见','久识','兔年','兔','农历二月','正东','木 · 林、桐、栩、棠','教育或活动策划场景'],
+['山灯','同行','转角','马年','虎','农历九月','东北','土 · 安、宇、城、屿','项目协调或设计场景'],
+['夜潮','来信','再逢','鼠年','鼠','农历十一月','正北','水 · 沐、清、澄、涵','研究或内容制作场景'],
+['晚晴','赴约','回音','鸡年','蛇','农历四月','正南','火 · 旭、昕、晗、煦','现场运营或文化服务场景']
+];
+const app = document.querySelector('#app');
+let page = -1;
+let answers = [];
+let cardIndex = null;
+
+function element(tag, content, className) {
+  const node = document.createElement(tag);
+  if (content) node.textContent = content;
+  if (className) node.className = className;
+  return node;
+}
+
+function button(label, action, className) {
+  const node = element('button', label, className);
+  node.type = 'button';
+  node.addEventListener('click', action);
+  return node;
+}
+
+function resultText(values, card) {
+  const a = (number) => values[number - 1];
+  const pick = (number) => fragments[number - 1][a(number)];
+  const opening = a(1) === 3 ? '生活里偶遇' : '在日常里留一面';
+  const timing = a(1) === 3
+    ? '如果哪天自然聊开，你也可以慢慢观察。'
+    : '如果聊得开心，你' + pick(3) + '。';
+  const portrait = a(5) === 2 && a(9) === 2
+    ? '你容易留意到能把邀约说具体的人。让你愿意再见的，是 TA 提完方案之后还会问「你觉得呢？」'
+    : '第一眼，你容易注意到这样的人：TA ' + pick(5) + '。多见几次，你会慢慢看 TA ' + pick(9) + '。';
+  const contact = a(7) === 2 && a(8) === 2
+    ? '几天没聊天也自在，只要下次见面是两个人都认真留出来的。'
+    : pick(7) + '。' + pick(8) + '。';
+  return [
+    ['正缘 · ' + opening, [pick(1) + '。你容易留意' + pick(2) + '。' + timing, pick(4) + '。']],
+    ['良人 · 让你愿意再见的 TA', [portrait, '临时有变动时，你更容易因为 TA ' + pick(6) + '而愿意再约。', contact, '牌面职业想象 · ' + card[8]]],
+    ['心意 · 你怎样表达好感', ['你会' + pick(10) + '。' + pick(11) + '，你更愿意把好感讲明白。', '如果联系少了一点，' + pick(12) + '。忙得累时，你想收到的是' + pick(13) + '。当你' + pick(14) + '，这段关系对你来说也更亲近了。']],
+    ['相处 · ' + ['缓','衡','明','约'][a(18)], [pick(17) + '。当你确认自己在意了，可以说「' + pick(18) + '」', '碰到改约时，可以说「' + pick(15) + '」' + pick(16) + '。周末各有安排时，也可以' + pick(19) + '。']]
+  ];
+}
+
+function show() {
+  const sheet = element('section', '', 'sheet');
+  let heading;
+  app.replaceChildren(sheet);
+  if (page < 0) {
+    sheet.classList.add('hero');
+    heading = element('h1', '你的正缘推演');
+    sheet.append(element('div', '缘', 'seal'), heading,
+      element('p', '从初见、心动到相处，看看什么样的缘分适合你。'),
+      button('开始答题', () => move(0), 'primary'),
+      element('small', '19 道情境题＋1 次翻牌 · 无需登录 · 答案仅在当前页面使用', 'privacy'));
+  } else if (page < questions.length) {
+    const [title, ...options] = questions[page];
+    const chapters = page < 4 ? '相遇' : page < 9 ? '良人' : page < 14 ? '心意' : page < 19 ? '相处' : '翻牌';
+    const meta = element('div', '', 'meta');
+    meta.append(element('span', chapters), element('span', (page + 1) + ' / ' + questions.length));
+    const progress = element('progress');
+    progress.max = questions.length;
+    progress.value = page + 1;
+    progress.setAttribute('aria-label', '答题进度');
+    heading = element('h2', title);
+    sheet.append(meta, progress, heading);
+    const nav = element('div', '', 'nav');
+    const lastStep = page === questions.length - 1;
+    const next = button(lastStep ? '揭晓缘牌' : '下一题', () => {
+      if (lastStep && cardIndex === null) cardIndex = Math.floor(Math.random() * cards.length);
+      move(page + 1);
+    }, 'primary');
+    next.disabled = answers[page] === undefined;
+    const optionButtons = options.map((option, index) => {
+      const choice = button('', () => {
+        answers[page] = index;
+        optionButtons.forEach((item, itemIndex) => item.setAttribute('aria-pressed', String(index === itemIndex)));
+        next.disabled = false;
+      }, 'option');
+      const letter = element('span', 'ABCD'[index]);
+      letter.setAttribute('aria-hidden', 'true');
+      choice.append(letter, document.createTextNode(option));
+      choice.setAttribute('aria-pressed', String(answers[page] === index));
+      sheet.append(choice);
+      return choice;
+    });
+    nav.append(button(page ? '上一题' : '返回首页', () => move(page - 1)), next);
+    sheet.append(nav);
+  } else {
+    const card = cards[cardIndex];
+    const all = resultText(answers, card);
+    const first = answers[19];
+    heading = element('h1', '你的缘笺');
+    sheet.append(element('p', '已翻开 · ' + card[0], 'insignia'), heading);
+    [all[first], ...all.filter((_, index) => index !== first)].forEach(([title, paragraphs]) => {
+      const article = element('article');
+      article.append(element('h3', title), ...paragraphs.map((line) => element('p', line)));
+      app.append(article);
+    });
+    const reveal = element('article');
+    const clues = element('div', '', 'clues');
+    ['明缘', '暗缘', '牌面应期', '生肖', '生月', '方位'].forEach((label, i) => {
+      clues.append(element('span', label + ' · ' + card[i + 1]));
+    });
+    reveal.append(element('h3', '缘牌 · ' + card[0]), clues, element('p', '名字字象 · ' + card[7]), element('small', '牌面意象为娱乐解读。'));
+    const nav = element('div', '', 'nav');
+    nav.append(button('返回修改', () => move(19)), button('打印或存为 PDF', () => window.print()), button('重新开始', () => {
+      answers = [];
+      cardIndex = null;
+      move(-1);
+    }));
+    app.append(reveal, nav);
+  }
+  heading.tabIndex = -1;
+  if (page >= 0) heading.focus({preventScroll: true});
+}
+
+function move(index) {
+  page = index;
+  show();
+  window.scrollTo(0, 0);
+}
+
+show();
+</script>
+</html>
