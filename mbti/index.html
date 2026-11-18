@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="48 道日常情境题，探索你的人格偏好和近期状态。"><title>人格光谱</title>
+<style>
+*{box-sizing:border-box}body{margin:0;color:#232139;background:#f4f3f9;font:16px/1.65 system-ui,sans-serif;--ink:#6041a7;--bright:#795ac4;--tint:#eee7fa}main{max-width:680px;margin:auto;padding:0 18px 36px}header{display:flex;align-items:center;justify-content:space-between;padding:20px 4px;font-weight:750}button{font:inherit;cursor:pointer;border:0;border-radius:14px;padding:12px 18px;background:white;color:var(--ink);font-weight:700}button:focus-visible,summary:focus-visible{outline:3px solid var(--bright);outline-offset:3px}button:disabled{opacity:.45;cursor:default}.primary{background:var(--ink);color:white}.card{padding:clamp(18px,5vw,34px);background:white;border-radius:26px;margin:16px 0;box-shadow:0 8px 30px #2b244508}.hero{border-radius:30px;padding:clamp(22px,6vw,42px);color:white;background:radial-gradient(circle at 95% 1%,#ffffff38 0 20%,transparent 20.3%),radial-gradient(circle at 0 100%,#ffffff20 0 19%,transparent 19.3%),linear-gradient(145deg,var(--bright),var(--ink));box-shadow:0 14px 30px color-mix(in srgb,var(--ink) 24%,transparent)}h1,h2,p{margin:0 0 12px}h1{font-size:clamp(33px,8vw,61px);line-height:1.15;letter-spacing:-.04em}h2{font-size:22px;line-height:1.4}.kicker{font-size:13px;letter-spacing:.16em;font-weight:750}.muted,small{color:#625d73}.hero small{color:white}.row{display:flex;align-items:center;justify-content:space-between;gap:10px}.tags{display:flex;flex-wrap:wrap;gap:6px;margin:18px 0}.tag{padding:3px 10px;border:1px solid currentColor;border-radius:999px;font-size:13px}.progress,.bar{height:8px;border-radius:8px;background:#ebe8f0;overflow:hidden}.progress i,.bar i{display:block;height:100%;background:var(--bright);border-radius:inherit}.choice{display:block;text-align:left;width:100%;border:2px solid #eeebf3;margin:8px 0;color:#29243b}.choice[aria-pressed=true]{border-color:var(--ink);background:var(--tint);color:var(--ink)}.choice:hover{background:var(--tint)}.nav{margin-top:18px}.band{background:var(--tint);color:var(--ink);padding:13px 15px;border-radius:14px;margin:12px 0}.ring{width:clamp(90px,25vw,142px);aspect-ratio:1;flex:none;border-radius:100%;background:conic-gradient(white var(--score),#ffffff36 0);display:grid;place-items:center}.ring div{background:var(--ink);width:82%;aspect-ratio:1;border-radius:50%;display:grid;align-content:center;text-align:center;line-height:1.2}.ring b{font-size:clamp(30px,8vw,50px)}.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;text-align:center}.stats b{display:block;color:var(--ink);font-size:22px}.stats small{font-size:12px}svg{display:block;width:100%;max-width:390px;margin:auto}.metric{margin:16px 0}.detail-line{border-top:1px solid #ece9f1;padding:14px 0}.detail-line p{margin:8px 0}.detail-line .muted{font-size:14px}.snapshot{border-left:3px solid var(--bright);padding-left:12px}summary{cursor:pointer;font-weight:750}li+li{margin-top:8px}a{color:var(--ink)}.intro .hero{padding-block:52px}.intro h1{margin:16px 0}.intro .primary{width:100%}.swatches{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}.swatches span{border-radius:50px;padding:4px 12px;color:white;font-size:13px}@media(max-width:350px){main{padding-inline:12px}.stats small{font-size:10px}}
+
+body{font-family:"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",system-ui,sans-serif}
+.report-page{position:relative;isolation:isolate}
+.report-page::before{content:"";position:absolute;z-index:-1;inset:-72px calc(50% - 50vw) auto;height:550px;background:linear-gradient(180deg,var(--tint),transparent)}
+.report-page .hero{padding:clamp(23px,6vw,40px);min-height:clamp(310px,85vw,430px);display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;background:radial-gradient(circle at 103% -8%,#ffffff21 0 29%,transparent 29.3%),radial-gradient(circle at -1% 111%,#ffffff19 0 29%,transparent 29.3%),linear-gradient(143deg,var(--bright),var(--ink) 88%)}
+.report-page .report-label{text-align:center;color:#fff;font-size:13px;letter-spacing:.13em;margin-bottom:22px}
+.report-page .rank h1{font-size:clamp(39px,11vw,74px);margin:4px 0 0;font-weight:750;letter-spacing:.015em}
+.report-page .rank small{font-size:13px}
+.report-page .ring{width:clamp(92px,29vw,148px);background:conic-gradient(white var(--score),#ffffff40 0)}
+.report-page .ring div{background:color-mix(in srgb,var(--ink) 83%,var(--bright));width:84%}
+.report-page .ring b,.report-page .stats b{font-variant-numeric:tabular-nums}
+.report-page .ring b{font-size:clamp(33px,9vw,51px);font-weight:700}
+.report-page .type-title{text-align:center;font-size:clamp(24px,7vw,40px);margin:23px 0 0;font-weight:750}
+.report-page .tags{justify-content:center;border-top:1px solid #ffffff50;padding-top:14px;margin:14px 0 0}
+.report-page .stage-text{margin:17px 2px 21px;color:#4d475e;font-size:15px;line-height:1.85}
+.report-page .card{margin:14px 0;border-radius:24px;padding:clamp(17px,5vw,29px)}
+.report-page .card h2{font-size:clamp(18px,5vw,24px);font-weight:750;display:flex;align-items:center;gap:10px}
+.report-page .card h2::before{content:"";width:4px;height:.9em;border-radius:4px;background:var(--bright);flex:none}
+.report-page .stats b{font-size:clamp(17px,4.5vw,25px);font-weight:750}
+.report-page .stats small{color:#5d586b}
+.report-page .band{background:var(--tint);color:var(--ink);line-height:1.65}
+.report-page details summary{color:#272337}
+.report-page .detail-line summary small{font-weight:500}
+.report-page .route{list-style:none;padding:0;counter-reset:step;margin-bottom:0}
+.report-page .route li{position:relative;padding:0 0 16px 38px;margin:0;counter-increment:step}
+.report-page .route li:last-child{padding-bottom:0}
+.report-page .route li::before{content:counter(step);position:absolute;left:0;top:.1em;display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--ink);color:#fff;font-size:13px;font-weight:750}
+.report-page .route li:not(:last-child)::after{content:"";width:2px;position:absolute;left:12px;top:29px;bottom:0;background:var(--tint)}
+@media(max-width:350px){.report-page .rank h1{font-size:37px}.report-page .ring{width:88px}.report-page .report-label{letter-spacing:.06em}}
+
+.report-page .hearts{display:flex;gap:clamp(5px,1.4vw,10px);margin-top:8px;font-size:clamp(18px,5vw,28px);line-height:1.2}
+.report-page .heart{color:#ffffff48;position:relative}
+.report-page .heart i{font-style:normal;position:absolute;left:0;top:0;color:#fff;overflow:hidden}
+.report-page .hero-quote{text-align:center;font-weight:600;font-style:italic;margin:15px 0 0;line-height:1.6}
+.report-page .stage-text span,.report-page .energy-copy span{display:block}
+.report-page .energy-layout{display:grid;grid-template-columns:clamp(74px,25vw,132px) minmax(0,1fr);gap:clamp(12px,5vw,30px);align-items:center}
+.report-page .energy-ring{display:grid;place-items:center;border-radius:50%;aspect-ratio:1;background:conic-gradient(var(--bright) var(--score),var(--tint) 0)}
+.report-page .energy-ring div{width:82%;aspect-ratio:1;border-radius:50%;background:white;display:grid;align-content:center;text-align:center;line-height:1.15}
+.report-page .energy-ring b{font-size:clamp(23px,7vw,42px);color:var(--ink);font-variant-numeric:tabular-nums}
+.report-page .energy-ring small{font-size:clamp(9px,2.8vw,12px)}
+.report-page .energy-bars{min-width:0;font-size:14px}
+.report-page .energy-bars .bar{height:5px;margin-top:3px}
+.report-page .energy-bars .metric{margin:8px 0}
+.report-page .energy-copy{margin:16px 0 0;color:#514a61;background:#f6f4f9;border-radius:14px;padding:13px 15px}
+.report-page .energy-copy span+span{margin-top:5px}
+
+.question-page{margin-top:5px;padding:clamp(19px,5.7vw,36px);border-radius:26px}
+.question-page .question-progress{margin-bottom:9px;gap:6px}
+.question-page .question-progress small{font-size:clamp(11px,3.35vw,14px);color:#61596e}
+.question-page .question-progress small:last-child{font-variant-numeric:tabular-nums;white-space:nowrap}
+.question-page .question-no{display:flex;align-items:center;gap:8px;margin:24px 0 8px;color:var(--ink);font-size:13px;letter-spacing:.08em}
+.question-page .question-no::before{content:"";width:4px;height:14px;border-radius:4px;background:var(--bright)}
+.question-page .question-title{font-size:clamp(22px,6.1vw,34px);line-height:1.46;font-weight:750;letter-spacing:.01em;color:#252232;margin:0 0 9px;overflow-wrap:anywhere}
+.question-page .question-help{font-size:clamp(13px,3.6vw,15px);line-height:1.65;color:#61596e;margin:0 0 16px}
+.question-page .choice{min-height:48px;padding:10px 13px;border-width:1px;border-radius:13px;background:#f8f6fb;color:#302a3d;font-size:clamp(15px,4.1vw,18px);font-weight:550;line-height:1.5;overflow-wrap:anywhere}
+.question-page .choice[aria-pressed=true]{background:var(--tint);border-color:var(--ink);color:var(--ink);font-weight:700}
+.question-page .nav button{font-size:clamp(14px,3.8vw,16px);min-height:44px}
+.question-page .nav button:not(.primary){background:#f3eff8}
+@media(max-width:350px){.question-page{padding-inline:15px}.question-page .question-title{font-size:21px}}
+</style>
+<main><header><span>◈ 人格光谱</span></header><div id="app"></div></main>
+<script>
+const pairs=[
+[
+['忙完一天，两个安排都方便时，你更想？','约熟人聊聊今天发生的事','留一段安静独处的时间'],
+['脑子里只有一个没成形的点子时，你通常？','找个人聊，边说边想','自己先写写画画，想清楚再说'],
+['一场喜欢的多人活动结束后，还有一个小时空闲，你更愿意？','跟其中几个人再坐一会儿','自己散会儿步，慢慢消化'],
+['几个熟人聚在一起聊近况时，你更自然的参与方式是？','多接几句，边聊边把自己的想法说出来','先听一阵，等想清楚了再分享自己的想法'],
+['周末醒来觉得精神不错，又没有安排时，你更想？','找人一起做件有趣的事','留出整块时间做自己的事'],
+['好消息刚确认，你最自然的第一反应是？','马上跟人分享，让兴奋在对话里延续','先自己感受一下，再找时机分享'],
+['在熟悉的小组里碰见一道难题时，你更容易怎样集中注意力？','听大家说，接住想法一起推演','先让自己停一下，独立推演']
+],[
+['学一种没接触过的工具，两份教程质量相当，你先看？','从头到尾走完一个具体例子','解释工具如何运作和能用在哪些地方'],
+['朋友问起你的旅行，你更自然地从哪里讲起？','那天见到、吃到、听到的具体事','这趟旅行让我想到的主题或启发'],
+['第一次看项目的介绍页，你先留意？','目前有什么功能、有哪些实际案例','它背后的想法和未来的可能性'],
+['读完一篇喜欢的文章，几天后你更容易记住？','里面的场景、细节或具体例子','文章串起的观点或隐含的意思'],
+['布置一间空房时，刚进门你先想到？','现有光线、尺寸和物件能怎么利用','如果换种布置，这里能变成什么样'],
+['听到一个新行业的故事，你更想追问？','他们具体怎么做、发生了哪些事','这种变化可能说明什么趋势'],
+['学一道新菜，试做前你更想弄懂？','食材用量、顺序和火候','各种食材为什么搭配、还能怎么变']
+],[
+['两位同伴都想用同一个时段，如何决定更让你信服？','用事先约定的同一套标准','结合两人的处境判断哪方更需要'],
+['帮朋友挑两份差不多的邀请，你会先问？','哪份更符合你列出的条件？','哪份更贴近你真正在意的东西？'],
+['和同伴复盘一次合作，你会先谈？','哪些做法影响了结果，依据是什么','哪些安排影响了彼此的体验'],
+['团队里出现意见分歧时，什么更容易改变你的判断？','一条能揭示原有推理漏洞的新信息','一个之前没被考虑到的人的处境'],
+['两种方案都可行，你更想用哪条原则定夺？','优先选择经得起一致比较的方案','优先选择符合当事人重视的原则的方案'],
+['给朋友反馈一份草稿，你更自然地从哪里切入？','哪处表达和论证需要修整','先理解对方最想表达什么，再从那里切入'],
+['一条约定让某人遇到意外困难时，你优先弄清？','例外能否总结成对大家都适用的规则','这次具体的困难和需要怎样被照顾']
+],[
+['去熟悉的地方玩一天，你更喜欢？','先定大致路线和主要时间','到地方再看状态和机会决定'],
+['两周后要交一件个人作品，你更舒服的做法是？','定几个时间点，按节点完成','留出空间，根据过程中冒出的想法调整'],
+['看到两家都不错的餐厅，后天就要去，你更想？','今天选一家定下来','看当天心情再决定'],
+['整理一件有几种做法的小事时，你通常？','先选定一个做法，再动手','先做一部分，边做边找合适的方法'],
+['独自安排一个可自由支配的下午，你更喜欢？','先知道大致做哪几件事','保留一整段可以随时改主意的时间'],
+['答应和朋友见面后，你更舒服的是？','把时间地点也一起敲定','先定个大方向，细节临近再说'],
+['几条路线都能按时到达，你更倾向？','出门前就挑好一条','到路口看当时情况再选']
+]];
+const dimensions=[
+['理性决策',['在一个有代价的选择前，我列过至少两个可行选项。','听到与原判断相反的信息时，我会核对它的来源。','在做重要决定前，我会先定下最看重的一条标准。','做完决定后，我能说出什么新情况会让我重新考虑。'],'选一个待定的小决定，写下两个方案和一个取舍标准。','做完一个选择后，记下哪条信息最可能改变你的判断。'],
+['自我接纳',['犯了一个小错之后，我能用具体的话描述问题。','发现自己确实做不到某件事时，我能说出需要哪种帮助。','听到别人肯定我做得好的地方时，我能直接接受。','和别人比较之后，我能说出一项自己也认可的进展。'],'回顾一次小失误，用一句话写发生了什么，再写下一次能做什么。','挑一个经常苛责自己的情境，试着用给朋友的语气写一句回应。'],
+['情绪调节',['收到让我不舒服的消息时，我能给自己一点时间再回复。','感觉烦躁时，我能说出最困扰自己的那件事。','遇到意外打乱心情后，我能回到手头的一件小事。','察觉自己很激动时，我会安排一个可行的缓冲动作，例如出去走一圈。'],'准备一句暂停用语，下次想抢着回复时先说出来。','试两种让自己缓下来的方法，记录各适合用在哪种场景。'],
+['关系适应',['临时接到别人请求、而我没空时，我会明确告知。','和别人意见不同时，我会确认自己有没有听懂对方的理由。','合作任务没说清楚时，我会主动确认自己负责的部分。','关系出现误会时，我有尝试说出希望怎样沟通。'],'下次遇到临时请求，练习说清自己能提供的时间或帮助。','出现分歧时，先转述对方的意思，再问一句自己有没有理解对。'],
+['长期视角',['安排一周时，我会给一件长期在意的事留出时间。','一件想做很久的事，我已经为它定过一个小步骤。','在短期机会和原有目标之间，我会想一想一个月后的影响。','原来的计划行不通时，我能找一个仍服务于目标的替代做法。'],'为一件长期在意的事约出下周的二十分钟。','月底看一次进展，保留有用的步骤，再改掉一个不合适的做法。']
+];
+const profiles={
+INTJ:['建筑师','把复杂目标画成路线','方案想得太完整，可能迟迟不给别人看草稿。','把未完成的方案给一位使用者看，只问哪里最难懂。','ENFP','一个擅长收束方向，一个擅长发现新路。','固定计划与临时灵感撞车时，可以约定一个可改动的时段。','研究策划、产品策略'],
+INTP:['逻辑学家','从模糊问题里拆出一个可验证的假设','为了把原因找全，你可能晚了一步验证最简单的解释。','给一个假设设二十分钟验证上限，做完再继续推演。','ENTJ','你把问题拆开，对方可能帮你把想法推进成决定。','讨论前先说清楚这次是一起探索，还是今天就要定下来。','算法研发、学术研究'],
+ENTJ:['指挥官','把目标拆成动作和责任','你可能在大家还没说清顾虑时就开始安排下一步。','定计划前问一轮「你最担心哪一步？」','INFP','你愿意推进，对方可能帮你看见某个计划对人的影响。','给决定留一点回旋，问清对方想要建议还是想先被听见。','经营管理、增长运营'],
+ENTP:['辩论家','用新角度打开卡住的讨论','不断抛出新选项时，别人可能分不清你究竟承诺了哪一个。','会议结束前，把唯一承诺的下一步写下来。','INFJ','你发散可能性，对方常愿意追问这个点子想解决什么。','如果讨论变成争论，先确认双方此刻想解决的问题。','创意策划、产品探索'],
+INFJ:['提倡者','看出一段对话里反复出现的需要','你可能替别人补全了没说出口的意思。','把一次推测改成一个开放问题，等对方亲口回答。','ENTP','对方带来新思路，你帮忙挑出最值得深聊的方向。','约好讨论什么时候停止辩论，开始分享各自的感受。','内容策划、教育支持'],
+INFP:['调停者','察觉一个选择和自己在意的东西是否一致','作品还没达到心里的样子时，你可能迟迟没有交出第一版。','挑一件在做的作品，约一个可以给人看的草稿日期。','ENFJ','你留意感受和价值，对方可能帮你把心里话带进对话。','邀请太多时，可以直说「我想去，但我今天需要自己待一会儿」。','写作编辑、视觉设计'],
+ENFJ:['主人公','把不同人的愿望拉进同一场对话','你可能很快替别人承担了对方还没开口的任务。','想主动帮忙前，问对方希望你听一听还是一起想办法。','INFP','你容易开启对话，对方可能让你有机会慢一点谈自己。','每次关心对方之后，给自己也留一句表达需要的话。','团队发展、活动策划'],
+ENFP:['竞选者','让人看见一件事还有别的做法','新鲜感下降后，已承诺的收尾容易被下一个点子挤掉。','下次想开新任务前，先交出现有任务的一个可用版本。','INTJ','你带来可能性，对方可能帮你筛出值得持续投入的一条路。','一周分别约好一件固定事和一件可以临时变动的事。','品牌创意、社群运营'],
+ISTJ:['物流师','把容易遗漏的步骤变成可靠流程','计划偏离原路时，你可能花很多力气恢复原样。','给下一次行程提前写一个可以接受的备选。','ESFP','你稳住安排，对方可能给熟悉的日子带来现场的趣味。','临时改计划前，把必须保留的一项和可商量的一项说清楚。','财务审计、工程管理'],
+ISFJ:['守卫者','记住别人真正需要的具体照顾','顾着维持关系时，你自己的安排可能被放到最后。','答应帮忙前，先说出自己这次能留出的时间。','ESTP','你提供细致的照顾，对方可能带你体验新的日常。','临时提议前问一句「你今天有余力吗？」','用户服务、教育运营'],
+ESTJ:['总经理','把分工和交付标准说清楚','你容易把效率问题看成对方不够投入。','下次催进度时，先问对方卡在哪个资源或决定上。','ISFP','你帮生活维持节奏，对方可能提醒你留一点空间给感受。','先商量家务、时间等具体安排，再各自说一项无法退让的需求。','项目运营、流程管理'],
+ESFJ:['执政官','从日常细节里照顾团队气氛','你可能把对方的沉默理解成接受了安排。','约定前请对方明确说出愿不愿意，并留一个谢绝选项。','ISTP','你留意关系的温度，对方常能用实际行动解决手头问题。','说清希望听到一句回应，还是想请对方帮一件具体的事。','客户关系、社区服务'],
+ISTP:['鉴赏家','动手找到问题真正出在哪一步','你已经在解决问题时，别人可能还不知道你怎么看。','开始动手前用一句话说出你的判断和下一步。','ESFJ','你习惯做具体的事，对方习惯把照顾说出来。','需要独处时提前说什么时候回来继续聊。','技术支持、制作维修'],
+ISFP:['探险家','把感受变成看得见的细节','别人没察觉你的犹豫时，计划可能沿着你并不舒服的方向继续。','在一次小安排里，早点说一个具体偏好。','ESTJ','你擅长感知生活质地，对方可能把琐事变成稳定安排。','约定哪些事情需要计划，哪些可以当天凭感觉选。','视觉设计、手作制作'],
+ESTP:['企业家','抓住现场能立刻验证的机会','即时反馈很强时，长期承诺容易被挤到后面。','为正在推进的一件事定一个下周的复查时间。','ISFJ','你愿意迈出第一步，对方可能让一起尝试的过程更踏实。','临时改约之前先留出商量时间。','销售开拓、现场运营'],
+ESFP:['表演者','让一个平常的场合变得具体有趣','你可能因为当下好玩而答应超过自己余力的安排。','收到邀请时先看看日历，再给明确的答复。','ISTJ','你带来现场乐趣，对方可能稳稳记住共同承诺。','提前约定一个固定时间，再留一段一起随便逛的时间。','活动执行、表演与传播']
+};
+const colors=[
+['紫人','分析家','#5832a0','#784bc2','#f0e8fd'],
+['绿人','外交家','#00634c','#157b63','#e1f6ec'],
+['蓝人','守护者','#174789','#2966b1','#e6f1ff'],
+['黄人','探索者','#854008','#a6530d','#fff0d9']
+];
+const family=t=>colors[t[1]==='N'?(t[2]==='T'?0:1):(t[3]==='J'?2:3)];
+const axes=['EI','SN','TF','JP'];
+const stages=[
+['低阶','起步期','先把注意力放在一个经常卡住的场景，做一次小练习。'],
+['中阶','进阶期','看看哪些做法已经顺手，再挑一种还不稳定的做法练到能重复。'],
+['高阶','整合期','把平时顺手的做法带到更复杂的场景，看看遇到压力时是否仍然合用。']
+];
+const frequency=['几乎没有','少数时候','大约一半时候','大多数时候','几乎每次','近期没遇到 / 想不起来'];
+const questions=[];
+for(let i=0;i<7;i++) pairs.forEach((group,axis)=>{
+  const [prompt,a,b]=group[i];
+  const reverse=(i+Math.floor(axis/2))%2===1;
+  questions.push({prompt,options:reverse?[b,a]:[a,b],axis,reverse});
+});
+for(let i=0;i<4;i++) dimensions.forEach(([name,items],dim)=>{
+  questions.push({prompt:items[i],options:frequency,dim});
+});
+const split=28;
+function evaluate(answers){
+  const votes=axes.map(()=>[0,0]);
+  const numbers=dimensions.map(()=>[]);
+  questions.forEach((q,i)=>{
+    const answer=answers[i];
+    if(q.axis!==undefined){
+      votes[q.axis][q.reverse?1-answer:answer]++;
+    }else if(answer!==5){
+      numbers[q.dim].push(answer*25);
+    }
+  });
+  const type=votes.map(([a,b],i)=>axes[i][a>b?0:1]).join('');
+  const values=numbers.map(list=>list.length>=2?list.reduce((a,b)=>a+b,0)/list.length:null);
+  const score=values.includes(null)?null:Math.round(values.reduce((a,b)=>a+b,0)/values.length);
+  const tier=score===null?null:score<50?0:score<75?1:2;
+  return {type,votes,values,score,tier,answers};
+}
+const app=document.querySelector('#app');
+const key='personality-spectrum-v1';
+let state={index:0,answers:[],done:false};
+try{
+  const data=JSON.parse(localStorage.getItem(key));
+  if(data && Number.isInteger(data.index) && data.index>=0 && data.index<questions.length &&
+    Array.isArray(data.answers) && data.answers.length<=questions.length &&
+    data.answers.every((answer,i)=>answer===null||(Number.isInteger(answer)&&answer>=0&&answer<questions[i].options.length))){
+      state=data;
+    }
+}catch{}
+const answered=value=>Number.isInteger(value);
+const count=()=>state.answers.filter(answered).length;
+function save(){try{localStorage.setItem(key,JSON.stringify(state));}catch{}}
+function show(html){
+  app.innerHTML=html;
+  window.scrollTo(0,0);
+  const title=app.querySelector('h1,h2');
+  title?.setAttribute('tabindex','-1');
+  title?.focus({preventScroll:true});
+}
+function theme(palette=colors[0]){
+  ['--ink','--bright','--tint'].forEach((variable,i)=>document.body.style.setProperty(variable,palette[i+2]));
+}
+function question(){
+  theme();
+  const q=questions[state.index], selection=state.answers[state.index];
+  const status=q.axis===undefined?'近期状态 · 回想过去 4 周':'人格偏好 · 选平时更自然的一侧';
+  show(`<section class="card question-page"><p class="row muted question-progress"><small>${status}</small><small>已答 ${count()} / 48</small></p><div class="progress" role="progressbar" aria-label="已答题目" aria-valuenow="${count()}" aria-valuemax="48"><i style="width:${count()/48*100}%"></i></div>
+  <p class="kicker question-no">第 ${state.index+1} 题</p><h2 class="question-title">${q.prompt}</h2><p class="question-help">${q.axis===undefined?'按遇到这个情境时的实际频率来选。':'两边都像时，选更常发生或更不费力的那个。'}</p>
+  <div role="group" aria-label="答案选项">${q.options.map((label,i)=>`<button class="choice" type="button" data-answer="${i}" aria-pressed="${selection===i}">${label}</button>`).join('')}</div>
+  <div class="row nav"><button id="prev" ${state.index===0?'disabled':''}>上一题</button><button id="next" class="primary" ${answered(selection)?'':'disabled'}>${state.index===47?'生成报告':state.index===27?'进入近期状态':'下一题'}</button></div>${state.done?'<button id="update-result" style="margin-top:8px">更新并查看报告</button>':''}</section>`);
+  const update=app.querySelector('#update-result');
+  if(update)update.onclick=()=>report(evaluate(state.answers));
+  const options=[...app.querySelectorAll('[data-answer]')];
+  const next=app.querySelector('#next');
+  options.forEach(button=>button.onclick=()=>{
+    state.answers[state.index]=Number(button.dataset.answer);
+    options.forEach(option=>option.setAttribute('aria-pressed',String(option===button)));
+    app.querySelector('.row small:last-child').textContent=`已答 ${count()} / 48`;
+    const progress=app.querySelector('[role=progressbar]');
+    progress.setAttribute('aria-valuenow',count());
+    progress.firstElementChild.style.width=`${count()/48*100}%`;
+    next.disabled=false;
+    save();
+  });
+  app.querySelector('#prev').onclick=()=>{state.index--;save();question();};
+  next.onclick=()=>{
+    if(state.index<47){state.index++;save();question();return;}
+    const missing=questions.findIndex((_,i)=>!answered(state.answers[i]));
+    if(missing>=0){state.index=missing;save();question();return;}
+    state.done=true;
+    save();
+    report(evaluate(state.answers));
+  };
+}
+function radar(values){
+  const point=(i,r)=>{
+    const angle=i*Math.PI*2/5-Math.PI/2;
+    return [180+Math.cos(angle)*r,120+Math.sin(angle)*r];
+  };
+  const outline=(values)=>values.map((v,i)=>point(i,v*.82).join(',')).join(' ');
+  return `<svg viewBox="0 0 360 230" role="img" aria-label="五维近期状态雷达图">${[25,50,75,100].map(n=>`<polygon points="${outline(Array(5).fill(n))}" fill="none" stroke="var(--bright)" stroke-opacity=".24"/>`).join('')}
+  ${values.every(v=>v!==null)?`<polygon points="${outline(values)}" fill="var(--bright)" fill-opacity=".2" stroke="var(--bright)" stroke-width="2"/>`:''}
+  ${dimensions.map(([name],i)=>{
+    const [x,y]=point(i,101);
+    const [cx,cy]=point(i,(values[i]??0)*.82);
+    return `<text x="${x}" y="${y}" text-anchor="middle" dominant-baseline="middle" fill="#4d475d" font-size="13">${name}</text>${values[i]===null?'':`<circle cx="${cx}" cy="${cy}" r="4" fill="white" stroke="var(--bright)" stroke-width="2"/>`}`;
+  }).join('')}</svg>`;
+}
+const dimensionNotes=[
+  ['遇到有代价的选择时，你多常比较选项、核查信息、明确标准或考虑何时改判。','在几个方案都说得通时，先把最重要的判断标准摆出来。','我现在缺的是一条能改变决定的信息，还是更多同类信息？'],
+  ['在犯错、比较、被肯定或需要帮助时，你如何看待自己、描述自己的处境。','遇到一个小失误，试着把「我怎么又这样」改写成一句能被观察到的事实。','如果这是朋友遇到的事，我会怎么描述他的处境？'],
+  ['情绪被触发后，你多常留出缓冲、辨认真正困扰的事，或回到一件小事。','在消息已经写好但还没发出去时，留一点时间重新读一遍。','我希望对方听懂什么？现在发这条消息能让对方听懂吗？'],
+  ['在请求、分歧、分工和误会中，你多常核对彼此的理解，表达边界或需要。','收到一个临时请求时，具体说出自己能帮到哪里、什么时间方便。','我们对下一步的理解一样吗？各自准备做什么？'],
+  ['在日程、机会和计划变化中，你多常留出时间、拆出下一步，或重新选择路径。','把一个长期目标变成下周日历上能看见的安排。','如果原计划做不了，做哪一件小事仍然算往前走？']
+];
+function evidenceRows(result){
+  const {values,answers}=result;
+  return dimensions.map(([name],dim)=>{
+    const items=questions.map((q,i)=>({q,i,answer:answers[i]})).filter(item=>item.q.dim===dim);
+    const known=items.filter(item=>item.answer<5).sort((a,b)=>b.answer-a.answer);
+    const first=known[0], last=known.at(-1), note=dimensionNotes[dim];
+    const spread=known.length>=2&&first.answer-last.answer>=2;
+    const read=item=>`<div class="snapshot"><p>${item.q.prompt}</p><small>你的回答 · ${frequency[item.answer]}</small></div>`;
+    const explanation=values[dim]===null?'本次有效情境太少，可以先把这一项留作观察。'
+      :spread?'这个维度里，不同场景的回答有明显落差。对照下面两题，想想是环境、对象，还是当时的余力让做法不同。'
+      :known.length<4?'已有回答比较接近，还有情境可以留到实际遇见时再看。'
+      :'这几道题的回答比较接近。可以拿最近一次具体经历，看看这个频率贴不贴近实际。';
+    return `<details class="detail-line"><summary>${name} · ${values[dim]===null?'待观察':Math.round(values[dim])+' 分'} <small>（${known.length}/4 道有效）</small></summary>
+      <p class="muted">${note[0]}</p><p>${explanation}</p>${first?read(first):''}${spread?read(last):''}
+      <p><strong>下次可以留意</strong> · ${note[2]}</p></details>`;
+  }).join('');
+}
+function practiceSteps(tier,practice){
+  if(practice===null)return '<li><strong>收集一个场景</strong> · 下周记一笔印象最深的选择、情绪或关系场景，说清当时发生了什么。</li>';
+  const action=[['起步','找一个能在十分钟内试完的情境。做到一次即可，记下最难开始的那一步。'],['复现','在两次相似情境里各试一次。记下哪次顺手、哪次忘了，以及当时有什么不同。'],['迁移','换到一个稍有压力的情境去试。做完看哪个步骤仍然有效，哪个需要调整。']][tier??0];
+  return `<li><strong>工作里遇到时</strong> · ${practiceScenes[practice][0]}</li>
+    <li><strong>生活里遇到时</strong> · ${practiceScenes[practice][1]}</li>
+    <li><strong>${action[0]}与回看</strong> · ${action[1]}</li>`;
+}
+const coverWords={
+  INTJ:['长线规划、独立推演','你总在想得很远。也可以让一个还没成形的想法，早点见到别人。'],
+  INTP:['概念拆解、独立推演','你追问的那一句「为什么」，常常是整件事终于开始变清楚的地方。'],
+  ENTJ:['目标推进、资源整合','你很会让事情往前走，也可以让同行的人有机会说说自己想怎样走。'],
+  ENTP:['发散联想、思路破局','那些别人以为已经谈完的事，你往往还能听见一句「可不可以换个办法」。'],
+  INFJ:['细察感受、深度对话','你常能听见别人没说完的话。自己的那一句，也值得慢慢说出来。'],
+  INFP:['内驱创作、价值敏感','你在意的那些细微差别，正是你的作品有自己声音的地方。'],
+  ENFJ:['关系连接、推动对话','你常给别人留一个说真话的位置，也可以把那个位置留给自己。'],
+  ENFP:['灵感联结、探索可能','你很会让熟悉的生活重新变得有意思。也可以陪一个喜欢的点子多走一段。'],
+  ISTJ:['细节可靠、流程清晰','你记得那些没人提醒的细节。偶尔留一点空白，可靠也依然是你的。'],
+  ISFJ:['细致照顾、记住需求','你记得别人喜欢什么。轮到自己时，你也可以直接说想要什么。'],
+  ESTJ:['组织分工、说清标准','你知道怎么把眼前的事理顺，也有余地先问一句大家卡在哪里。'],
+  ESFJ:['日常照顾、关系协调','你让相处中的许多小事有人照应，也值得听到一句「你今天怎么样」。'],
+  ISTP:['动手验证、解决问题','你常用行动把事情修好。有时提前说一句你在做什么，就能让人安心。'],
+  ISFP:['感受细腻、具体表达','你留意到的那一点光、一点声音，也可以成为别人重新看一件事的入口。'],
+  ESTP:['现场观察、快速试错','你很会抓住眼前能试的一步。走出去之后，也可以停下来看看路通向哪里。'],
+  ESFP:['现场感知、带动气氛','和你在一起，寻常的事也容易被记住。热闹过后，留一点时间给自己也很好。']
+};
+const practiceScenes=[
+  ['工作里收到两条相反的方案意见时，先写下交付期限、返工代价和最想验证的一件事，再回消息。','买一件平时会反复比价的东西前，先写一条必须满足的条件，到了就停。'],
+  ['开会漏讲了一点时，散会后只记下漏了什么，给下一次开场补一句提示。','看到朋友最近进展很快时，回想自己近一周完成的一件小事，把它写下来。'],
+  ['看到一句刺耳的工作反馈时，先在草稿里写出想回的话，离开屏幕五分钟，再只留要确认的事实。','和亲近的人聊到一半开始着急时，可以说「我想缓十分钟，等一下回来接着聊」。'],
+  ['有人临下班请你接手一件事时，直接说明今天能做到哪一步、剩下的什么时候能接。','临时改变见面安排时，先问对方最想保留哪一部分，再说自己需要什么。'],
+  ['忙完一天收电脑前，给一直被推迟的事约出二十分钟，并写好打开文件要做的第一步。','计划的运动或学习被打断时，挑一个十分钟版本放回这周日历。']
+];
+function energySection(valid,score){
+  const first=valid[0], last=valid.at(-1);
+  const complete=score!==null;
+  const gap=valid.length>1&&first.v!==last.v;
+  const opening=complete?`这次的五维平均为 ${score}。它汇总的是你过去四周回忆到的行为频率。`:'这次有些情境没遇到，暂时只看已有维度。';
+  const pattern=gap?`你在<strong>${dimensions[first.i][0]}</strong>相关的情境里更常用到这些做法；<strong>${dimensions[last.i][0]}</strong>可以先挑个具体场景观察。`:'目前有分数的维度没有拉开差距，可以从最近印象最深的一个场景开始。';
+  const action=gap?dimensionNotes[last.i][2]:'哪件事当时做得比你预想中顺手？';
+  return `<section class="card"><h2>能量解析</h2>
+  <div class="energy-layout"><div class="energy-ring" style="--score:${score??0}%"><div><b>${score??'—'}</b><small>五维平均</small></div></div>
+  <div class="energy-bars">${valid.length?valid.slice(0,3).map(({v,i})=>`<div class="metric"><div class="row"><span>${dimensions[i][0]}</span><strong>${Math.round(v)}</strong></div><div class="bar" aria-hidden="true"><i style="width:${v}%"></i></div></div>`).join(''):'近期没有足够的有效作答。'}</div></div>
+  <p class="energy-copy"><span>${opening}</span><span>${pattern}</span><span>下次可以问自己：${action}</span></p></section>`;
+}
+function report(result){
+  const {type,votes,values,score,tier}=result;
+  const p=profiles[type], palette=family(type), partner=profiles[p[4]], partnerColor=family(p[4]);
+  const stage=tier===null?['待观察','有效情境较少','部分维度暂缺足够的近期情境。你仍可查看人格偏好和已有的维度分。']:stages[tier];
+  const valid=values.map((v,i)=>({v,i})).filter(x=>x.v!==null).sort((a,b)=>b.v-a.v);
+  const flat=valid.length>0&&valid[0].v===valid.at(-1).v;
+  const strongest=flat?'暂无突出维度':valid.filter(x=>x.v===valid[0].v).map(x=>dimensions[x.i][0]).join('、');
+  const lowest=flat?'可自选一个维度':valid.filter(x=>x.v===valid.at(-1).v).map(x=>dimensions[x.i][0]).join('、');
+  const closest=valid.filter(x=>x.v===valid.at(-1).v);
+  const practice=valid.length?(flat?valid[0]:closest[0]).i:null;
+  const borderAxes=axes.filter((_,i)=>Math.abs(votes[i][0]-votes[i][1])===1);
+  const [keywords,quote]=coverWords[type];
+  const tags=[stage[1],...keywords.split('、'),valid[0]&&!flat?dimensions[valid[0].i][0]:null].filter(Boolean);
+  const hearts=[2,3.5,5][tier]??0;
+  const grayDetail=valid.length>1&&!flat
+    ?`这段时间，你在${dimensions[valid[0].i][0]}的情境里更顺手。接下来可以挑一件小事，练一练${dimensions[practice][0]}。`
+    :'接下来的一周，可以留意哪一个场景最值得你停下来多看一眼。';
+  theme(palette);
+  show(`<div class="report-page"><section class="hero"><p class="kicker report-label">${palette[0]} · ${palette[1]}</p><div class="row"><div class="rank"><small>近期状态 · ${stage[1]}</small><h1>${stage[0]}</h1>${tier===null?'':`<div class="hearts" aria-label="${stage[0]}状态标记">${Array.from({length:5},(_,i)=>`<span class="heart" aria-hidden="true">♥<i style="width:${Math.max(0,Math.min(1,hearts-i))*100}%">♥</i></span>`).join('')}</div>`}</div><div class="ring" role="img" aria-label="状态总分 ${score??'待观察'}" style="--score:${score??0}%"><div><b>${score??'—'}</b><small>状态总分</small></div></div></div>
+  <h2 class="type-title">${type} · ${p[0]}</h2><div class="tags">${tags.map(tag=>`<span class="tag">${tag}</span>`).join('')}</div><p class="hero-quote">${quote}</p></section><p class="stage-text"><span>${stage[2]}</span><span>${grayDetail}</span></p>
+  <section class="card"><h2>五维能量图谱</h2><p class="muted">近 4 周自评 · 每项 0–100 分</p>${radar(values)}
+  <div class="stats">${dimensions.map(([name],i)=>`<div><b>${values[i]===null?'—':Math.round(values[i])}</b><small>${name}</small></div>`).join('')}</div>
+  ${valid.length?`<div class="band"><strong>更顺手</strong> · ${strongest}<br><strong>可练习</strong> · ${lowest}</div>`:''}
+  ${values.includes(null)?'<small>带「—」的维度可评情境不足，雷达图只标出已有分数的点。</small>':''}</section>
+  <section class="card"><h2>核心力量与常见卡点</h2><p class="band"><strong>${p[1]}</strong></p><p><strong>这种偏好在哪儿有用</strong> · ${p[7]}等工作场景里，可以观察自己是否喜欢发挥这项倾向。</p><p><strong>用过头时可能怎样</strong> · ${p[2]}</p><p><strong>下次怎么试</strong> · ${p[3]}</p><details><summary>看我的四组偏好</summary>
+  ${axes.map((label,i)=>`<div class="metric"><div class="row"><span>${label[0]} · ${votes[i][0]} 题</span><span>${votes[i][1]} 题 · ${label[1]}</span></div><div class="bar"><i style="width:${votes[i][0]/7*100}%"></i></div></div>`).join('')}</details>
+  ${borderAxes.length?`<p style="margin-top:12px"><small>${borderAxes.map(s=>s.split('').join('/')).join('、')} 的答案为 4 比 3。换个场景时，你可能更接近另一侧。</small></p>`:''}</section>
+  ${energySection(valid,score)}
+  <section class="card"><h2>五维解析</h2>
+  <p class="muted">展开维度，可以看到它在问什么、你的代表作答和下一次可以观察的细节。</p>
+  ${valid.length>1&&!flat?`<p class="band">这次「${dimensions[valid[0].i][0]}」比「${dimensions[valid.at(-1).i][0]}」高约 ${Math.round(valid[0].v-valid.at(-1).v)} 分。可以对照一次近期经历：两种做法分别在什么条件下更容易做到？</p>`:''}
+  ${evidenceRows(result)}</section>
+  <section class="card"><h2>进化路线</h2><p class="muted">${stage[0]} · 接下来一周挑一项先做</p><ol class="route"><li><strong>从人格卡点入手</strong> · ${p[3]}</li>${practiceSteps(tier,practice)}</ol></section>
+  <section class="card"><h2>♡ 恋爱官配</h2><p><small>娱乐向配对 · 用来打开话题</small></p><p><span class="tag" style="color:${partnerColor[2]}">${partnerColor[0]}</span> <strong>${p[4]} · ${partner[0]}</strong></p><p><strong>可能怎样互补</strong> · ${p[5]}</p><p class="band"><strong>遇到节奏差时怎么谈</strong> · ${p[6]}</p><details><summary>约会后可以一起聊</summary><p>最近一次相处里，哪件事让你感到被理解？哪件事需要我下次先问你一声？试着各用一个真实例子来回答。</p></details></section>
+  <section class="card"><h2>职业灵感</h2><p>${p[7]}</p><small>这些方向可用来探索自己喜欢的工作内容。</small></section>
+  <section class="card"><details><summary>分数怎么算</summary><p>人格偏好每组 7 道二选一，票数较多的一侧组成四字母类型。颜色由类型固定。</p><p>状态题频率依次为 0、25、50、75、100 分。每维至少 2 个有效答案才出分，五维均有效时取未四舍五入的维度分平均、再取整。0–49 为低阶、50–74 为中阶、75–100 为高阶。这些是本测验的体验阈值，供个人回顾与比较。</p></details>
+  <div class="row nav"><button id="edit">修改答案</button><button id="reset" class="primary">重新测试</button></div></section></div>`);
+  app.querySelector('#edit').onclick=()=>{
+    review();
+  };
+  app.querySelector('#reset').onclick=()=>{
+    if(!confirm('清除本次答案并重新开始？'))return;
+    state={index:0,answers:[],done:false};save();question();
+  };
+}
+function review(){
+  theme();
+  show(`<section class="card"><h2>修改答案</h2><p>选一题跳回去修改。改完可以直接更新报告。</p><div class="swatches">${questions.map((q,i)=>`<button style="background:var(--tint)" data-jump="${i}" aria-label="第 ${i+1} 题，${q.prompt}">${i+1}</button>`).join('')}</div><button id="back-report" class="primary" style="margin-top:18px">返回报告</button></section>`);
+  app.querySelector('#back-report').onclick=()=>report(evaluate(state.answers));
+  app.querySelectorAll('[data-jump]').forEach(button=>button.onclick=()=>{
+    state.index=Number(button.dataset.jump);
+    save();
+    question();
+  });
+}
+if(state.done&&count()===questions.length)report(evaluate(state.answers));
+else{state.done=false;question();}
+</script></html>
